@@ -58,6 +58,29 @@ local plugins = {
   {
     "Exafunction/codeium.vim",
     lazy = false,
+    priority = 1,
+  },
+
+  {
+    "dmmulroy/tsc.nvim",
+    event = "BufEnter *.ts",
+    config = function()
+      require("tsc").setup()
+    end,
+  },
+
+  {
+    "saecki/crates.nvim",
+    event = "BufAdd Cargo.toml",
+    opts = {
+      null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+      },
+    },
+    config = function()
+      require("crates").setup()
+    end,
   },
   -- To make a plugin not be loaded
   -- {
