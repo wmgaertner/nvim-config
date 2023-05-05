@@ -1,4 +1,4 @@
--- local autocmd = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Auto resize panes when resizing nvim window
 -- autocmd("VimResized", {
@@ -8,3 +8,9 @@
 vim.opt.termguicolors = true
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
+
+-- automatically set cwd to file on opening neovim
+autocmd("VimEnter", {
+  pattern = "*",
+  command = "lcd %:p:h",
+})
