@@ -57,8 +57,7 @@ local plugins = {
 
   {
     "Exafunction/codeium.vim",
-    lazy = false,
-    priority = 1,
+    event = "InsertEnter",
   },
 
   {
@@ -67,6 +66,12 @@ local plugins = {
     config = function()
       require("tsc").setup()
     end,
+  },
+  -- nvim-notify used foor tsc.nvim
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+    priority = 1,
   },
 
   {
