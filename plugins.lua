@@ -46,6 +46,13 @@ local plugins = {
     opts = overrides.blankline,
   },
 
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      extensions_list = { "themes", "terms", "notify" },
+    },
+  },
+
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
@@ -67,7 +74,7 @@ local plugins = {
       require("tsc").setup()
     end,
   },
-  -- nvim-notify used foor tsc.nvim
+  -- nvim-notify used for tsc.nvim
   {
     "rcarriga/nvim-notify",
     lazy = false,
