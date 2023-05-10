@@ -49,7 +49,7 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     opts = {
-      extensions_list = { "themes", "terms", "notify" },
+      extensions_list = { "themes", "terms", "notify", "fzf" },
     },
   },
 
@@ -92,6 +92,34 @@ local plugins = {
     },
     config = function()
       require("crates").setup()
+    end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "InsertEnter",
+  },
+
+  {
+    "andymass/vim-matchup",
+    event = "InsertEnter",
+  },
+
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+  },
+
+  {
+    "simrat39/rust-tools.nvim",
+    ft = { "rust" },
+    dependencies = { "neovim/nvim-lspconfig" },
+    opts = function()
+      return require "custom.configs.rust-tools"
+    end,
+    config = function(_, opts)
+      require("rust-tools").setup(opts)
     end,
   },
   -- To make a plugin not be loaded

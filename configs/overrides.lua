@@ -24,6 +24,11 @@ M.treesitter = {
   rainbow = {
     enable = true,
   },
+
+  matchup = {
+    enable = true,
+    disable = {},
+  },
 }
 
 M.mason = {
@@ -43,9 +48,6 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
-
-    -- rust stuff
-    "rust-analyzer",
   },
 }
 

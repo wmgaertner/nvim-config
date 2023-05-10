@@ -16,8 +16,6 @@ local sources = {
   b.formatting.rustywind,
   b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
 
-  -- prisma
-  b.formatting.prismaFmt,
   -- Lua
   b.formatting.stylua,
 
