@@ -69,7 +69,7 @@ local plugins = {
 
   {
     "dmmulroy/tsc.nvim",
-    event = "BufEnter *.ts",
+    event = "BufEnter *.ts,*.tsx",
     config = function()
       require("tsc").setup()
     end,
