@@ -19,7 +19,8 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    end,
+    -- Override to setup mason-lspconfig
   },
 
   -- override plugin configs
@@ -74,7 +75,7 @@ local plugins = {
       require("tsc").setup()
     end,
   },
-  -- nvim-notify used for tsc.nvim
+  --NOTE: nvim-notify used for tsc.nvim
   {
     "rcarriga/nvim-notify",
     lazy = false,
@@ -83,15 +84,15 @@ local plugins = {
 
   {
     "saecki/crates.nvim",
-    event = "BufAdd Cargo.toml",
-    opts = {
-      null_ls = {
-        enabled = true,
-        name = "crates.nvim",
-      },
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufRead Cargo.toml" },
     config = function()
-      require("crates").setup()
+      require("crates").setup {
+        null_ls = {
+          enabled = true,
+          name = "crates",
+        },
+      }
     end,
   },
 
@@ -122,6 +123,16 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
+
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
