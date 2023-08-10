@@ -87,21 +87,22 @@ local plugins = {
 
   {
     "dmmulroy/tsc.nvim",
-    event = "BufEnter *.ts,*.tsx",
-    config = function()
-      require("tsc").setup()
-    end,
+    event = "BufNew *.ts,*.tsx",
+    config = true,
   },
   --NOTE: nvim-notify used for tsc.nvim
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
+    opts = {
+      background_colour = "#000000",
+    },
   },
 
   {
     "saecki/crates.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    event = { "BufRead Cargo.toml" },
+    event = { "BufNew Cargo.toml" },
     config = function()
       require("crates").setup {
         null_ls = {
