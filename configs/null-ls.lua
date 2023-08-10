@@ -13,9 +13,12 @@ local code_actions = null_ls.builtins.code_actions
 local sources = {
 
   -- webdev stuff
-  b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
   b.formatting.rustywind,
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  b.formatting.dprint.with {
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "markdown" },
+  },
 
   -- Lua
   b.formatting.stylua,
@@ -25,6 +28,10 @@ local sources = {
 
   -- rust
   b.formatting.rustfmt,
+
+  -- python
+  b.diagnostics.ruff,
+  b.formatting.black,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
