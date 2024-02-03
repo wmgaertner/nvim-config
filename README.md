@@ -1,1 +1,1 @@
-My custom config based off [NVChad](https://github.com/NvChad/NvChad)
+My neovim config based on [LazyVim](https://github.com/LazyVim/LazyVim)

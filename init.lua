@@ -1,25 +1,15 @@
-local autocmd = vim.api.nvim_create_autocmd
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
 
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
-vim.opt.termguicolors = true
-vim.opt.list = true
-vim.opt.listchars:append "eol:↴"
-
--- automatically set cwd to file on opening neovim
-autocmd("VimEnter", {
-  pattern = "*",
-  command = "lcd %:p:h",
-})
-
-autocmd("BufRead", {
-  group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-  pattern = "Cargo.toml",
-  callback = function()
-    local cmp = require "cmp"
-    cmp.setup.buffer { sources = { { name = "crates" } } }
-  end,
-})
+vim.g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf"
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --crlf",
+    ["*"] = "win32yank.exe -o --crlf"
+  },
+  cache_enable = 0,
+}
